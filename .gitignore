@@ -40,6 +40,9 @@ build/
 # vercel
 .vercel
 
+# codex local runtime
+.codex/
+
 # misc
 .DS_Store
 *.pem
