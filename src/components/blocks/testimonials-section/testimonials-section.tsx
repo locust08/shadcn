@@ -35,12 +35,12 @@ const TestimonialsComponent = ({ testimonials }: TestimonialsComponentProps) => 
           </Badge>
 
           <h2 className='text-2xl font-semibold sm:text-3xl lg:text-4xl'>
-            Customers <br />
-            Feedback
+            Client <br />
+            Testimonials
           </h2>
 
           <p className='text-muted-foreground text-xl'>
-            Here&apos;s how our customers enjoyed our restaurant and the services we offer.
+            Hear from business owners and professionals who used Ruang Bestari financing to support their next step.
           </p>
 
           <div className='flex items-center gap-4'>

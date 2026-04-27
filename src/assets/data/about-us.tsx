@@ -3,22 +3,22 @@ import { Trophy, SparklesIcon, Users, ChefHat } from 'lucide-react'
 export const stats = [
   {
     icon: SparklesIcon,
-    value: '20+',
-    description: ['Years of Culinary', 'Expertise']
+    value: '10+',
+    description: ['Years Industry', 'Experience']
   },
   {
     icon: ChefHat,
-    value: '70+',
-    description: ['Signature Dishes', 'Perfected']
+    value: '10000+',
+    description: ['Satisfied', 'Clients']
   },
   {
     icon: Users,
-    value: '500+',
-    description: ['Happy Guests', 'Every Month']
+    value: '80+',
+    description: ['Team', 'Members']
   },
   {
     icon: Trophy,
-    value: '25',
-    description: ['Prestigious', 'Culinary Awards']
+    value: '5+',
+    description: ['Years Flexible', 'Repayment']
   }
 ]

@@ -19,12 +19,12 @@ const NewItems = ({ newItems }: { newItems: NewItem }) => {
         {/* Header */}
         <div className='mx-auto mb-12 flex max-w-2xl flex-col items-center justify-center space-y-4 text-center sm:mb-16 lg:mb-24'>
           <Badge variant='outline' className='text-sm font-normal'>
-            New Items
+            The Process
           </Badge>
-          <h2 className='text-2xl font-semibold md:text-3xl lg:text-4xl'>Fresh menu items</h2>
+          <h2 className='text-2xl font-semibold md:text-3xl lg:text-4xl'>Get cash in four easy steps</h2>
           <p className='text-muted-foreground text-xl'>
-            Explore our most recent additions to the menu. Each dish is designed to delight your taste buds and provide
-            a memorable dining experience.
+            Apply online, submit your documents, receive a fast review, and get approved funds sent directly to your
+            bank account.
           </p>
         </div>
 
@@ -50,7 +50,7 @@ const NewItems = ({ newItems }: { newItems: NewItem }) => {
                   asChild
                 >
                   <a href={item.blogLink}>
-                    Full menu
+                    Apply now
                     <ArrowRightIcon className='transition-transform duration-200 group-hover:translate-x-0.5' />
                   </a>
                 </Button>

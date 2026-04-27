@@ -1,5 +1,13 @@
 export const footerData = [
   {
+    title: 'Business Loan',
+    href: '#popular-dishes'
+  },
+  {
+    title: 'Process',
+    href: '#new-items'
+  },
+  {
     title: 'About Us',
     href: '#about-us'
   },
@@ -12,7 +20,7 @@ export const footerData = [
     href: '#contact-us'
   },
   {
-    title: 'Offers',
+    title: 'Interest Rate',
     href: '#offers'
   }
 ]

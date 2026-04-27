@@ -16,12 +16,12 @@ const PopularDishes = ({ popularDishes }: { popularDishes: PopularDish }) => {
       <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
         <div className='mx-auto mb-12 flex max-w-2xl flex-col items-center justify-center space-y-4 text-center sm:mb-16 lg:mb-24'>
           <Badge variant='outline' className='text-sm font-normal'>
-            Popular Dishes
+            Business Loan
           </Badge>
-          <h2 className='text-2xl font-semibold md:text-3xl lg:text-4xl'>Favorite meals</h2>
+          <h2 className='text-2xl font-semibold md:text-3xl lg:text-4xl'>Unlock financial freedom</h2>
           <p className='text-muted-foreground text-xl'>
-            Discover our most loved creations crafted with passion, fresh ingredients, and bold flavours that keep
-            guests coming back for more.
+            Businesses often face cash flow pressure, budgeting needs, and growth costs. Our company loan options help
+            registered SMEs access capital with a clear application path.
           </p>
         </div>
 

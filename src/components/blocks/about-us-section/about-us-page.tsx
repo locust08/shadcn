@@ -23,10 +23,10 @@ const AboutUs = ({ stats }: { stats: Stat[] }) => {
           <Badge variant='outline' className='text-sm font-normal'>
             About Us
           </Badge>
-          <h2 className='text-2xl font-semibold tracking-tight md:text-3xl lg:text-4xl'>Our story & achievements</h2>
+          <h2 className='text-2xl font-semibold tracking-tight md:text-3xl lg:text-4xl'>Who we are</h2>
           <p className='text-muted-foreground text-xl'>
-            At Restaurant, every dish tells a story. With years of dedication and a passion for fine dining, we&apos;ve
-            transformed the art of cooking into an unforgettable experience.
+            Ruang Bestari is a Malaysian financial service provider committed to helping businesses access flexible,
+            transparent funding for stability, cash flow, and growth.
           </p>
           <Button
             size='lg'
@@ -34,7 +34,7 @@ const AboutUs = ({ stats }: { stats: Stat[] }) => {
             className='group relative w-fit overflow-hidden rounded-full text-base before:absolute before:inset-0 before:rounded-[inherit] before:bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.5)_50%,transparent_75%,transparent_100%)] before:bg-[length:250%_250%,100%_100%] before:bg-[position:200%_0,0_0] before:bg-no-repeat before:transition-[background-position_0s_ease] before:duration-1000 hover:before:bg-[position:-100%_0,0_0] has-[>svg]:px-6 dark:before:bg-[linear-gradient(45deg,transparent_25%,rgba(0,0,0,0.2)_50%,transparent_75%,transparent_100%)]'
           >
             <a href='#'>
-              Read more
+              Contact us
               <ArrowRightIcon className='transition-transform duration-200 group-hover:translate-x-0.5' />
             </a>
           </Button>

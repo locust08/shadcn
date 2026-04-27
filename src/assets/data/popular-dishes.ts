@@ -1,30 +1,30 @@
 export const popularDishes = [
   {
     image: '/images/popular-dishes/grilled-herb-chicken.webp',
-    alt: 'Grilled Herb Chicken',
-    name: 'Grilled Herb Chicken',
-    type: 'Main course 🥘',
-    description: 'Juicy chicken grilled with herbs and served with garlic sauce.'
+    alt: 'Loan amount range',
+    name: 'RM1,000 to RM500,000',
+    type: 'Business funding',
+    description: 'Capital funding for SMEs that need extra cash flow to scale, stabilize, or grow.'
   },
   {
     image: '/images/popular-dishes/classic-margherita-pizza.webp',
-    alt: 'Classic Margherita Pizza',
-    name: 'Classic Margherita Pizza',
-    type: 'Main course 🍕',
-    description: 'Crispy crust, fresh mozzarella, and basil a true classic.'
+    alt: 'Identity documents',
+    name: 'IC and SSM License',
+    type: 'Application documents',
+    description: 'Prepare your identification card copy and valid SSM license for verification.'
   },
   {
     image: '/images/popular-dishes/spicy-shrimp-linguine.webp',
-    alt: 'Spicy Shrimp Linguine',
-    name: 'Spicy Shrimp Linguine',
-    type: 'Main course 🥘',
-    description: 'Shrimp, chili, and creamy tomato sauce tossed to perfection.'
+    alt: 'Financial statements',
+    name: 'EPF and Bank Statement',
+    type: 'Financial records',
+    description: 'Submit your latest EPF statement and recent 3-month bank statement.'
   },
   {
     image: '/images/popular-dishes/chocolate-lava-cake.webp',
-    alt: 'Chocolate Lava Cake',
-    name: 'Chocolate Lava Cake',
-    type: 'Desert 🍫',
-    description: 'Warm molten cake with a scoop of vanilla ice cream.'
+    alt: 'Utility bills',
+    name: 'Utility Bill Support',
+    type: 'Address proof',
+    description: 'Include your most recent electricity and water bill to complete the application.'
   }
 ]

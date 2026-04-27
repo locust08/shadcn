@@ -25,13 +25,14 @@ const Gallery = ({ galleryImage }: { galleryImage: GalleryImage }) => {
         {/* Header */}
         <div className='mb-12 space-y-4 text-center sm:mb-16 lg:mb-24'>
           <Badge variant='outline' className='text-sm font-normal'>
-            Offers
+            Interest Rate
           </Badge>
 
-          <h2 className='text-2xl font-semibold md:text-3xl lg:text-4xl'>Explore our Offerings</h2>
+          <h2 className='text-2xl font-semibold md:text-3xl lg:text-4xl'>Clear repayment terms</h2>
 
           <p className='text-muted-foreground text-xl'>
-            Don&apos;t miss out on the dining experience. Reserve your table and indulge in a culinary journey today.
+            Fixed rate from 8% to 12% APR with repayment options from 6 to 60 months. Representative example: RM5,000
+            borrowed for 180 days, RM448 interest, RM5,448 total payable.
           </p>
         </div>
 

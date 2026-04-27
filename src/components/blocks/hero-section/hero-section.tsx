@@ -94,12 +94,12 @@ const HeroSection = ({ menudata }: { menudata: MenuData[] }) => {
         <div className='grid grid-cols-1 gap-6 gap-y-12 md:gap-y-16 lg:grid-cols-5'>
           <div className='flex w-full flex-col justify-center gap-5 max-lg:items-center lg:col-span-3 lg:h-95.5'>
             <h1 className='text-3xl leading-[1.29167] font-semibold text-balance max-lg:text-center sm:text-4xl lg:text-5xl'>
-              Savor the taste of perfection
+              SME Business Financing Malaysia
             </h1>
 
             <p className='text-muted-foreground max-w-xl text-xl max-lg:text-center'>
-              Welcome to Restaurant where passion meets the plate.From sizzling appetisers to signature desserts, every
-              dish is crafted to delight your senses.
+              Working capital and business funding for registered Malaysian businesses. Repayment from 6 to 60 months.
+              APR up to 12%. Licensed by KPKT.
             </p>
 
             <div className='flex items-center gap-3.5'>
@@ -109,7 +109,7 @@ const HeroSection = ({ menudata }: { menudata: MenuData[] }) => {
                 className='group relative w-fit overflow-hidden rounded-full text-base before:absolute before:inset-0 before:rounded-[inherit] before:bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.5)_50%,transparent_75%,transparent_100%)] before:bg-[length:250%_250%,100%_100%] before:bg-[position:200%_0,0_0] before:bg-no-repeat before:transition-[background-position_0s_ease] before:duration-1000 hover:before:bg-[position:-100%_0,0_0] has-[>svg]:px-6 dark:before:bg-[linear-gradient(45deg,transparent_25%,rgba(0,0,0,0.2)_50%,transparent_75%,transparent_100%)]'
               >
                 <a href='#'>
-                  Order now
+                  Apply loan now
                   <ArrowRightIcon className='transition-transform duration-200 group-hover:translate-x-0.5' />
                 </a>
               </Button>
@@ -118,7 +118,7 @@ const HeroSection = ({ menudata }: { menudata: MenuData[] }) => {
                 asChild
                 className='bg-primary/10 hover:bg-primary/20 text-primary rounded-full text-base'
               >
-                <a href='#contact-us'>Book table</a>
+                <a href='#new-items'>See process</a>
               </Button>
             </div>
           </div>

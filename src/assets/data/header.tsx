@@ -2,6 +2,14 @@ import type { NavigationSection } from '@/components/blocks/menu-navigation'
 
 export const navigationData: NavigationSection[] = [
   {
+    title: 'Business Loan',
+    href: '#popular-dishes'
+  },
+  {
+    title: 'Application Process',
+    href: '#new-items'
+  },
+  {
     title: 'About Us',
     href: '#about-us'
   },
@@ -14,7 +22,7 @@ export const navigationData: NavigationSection[] = [
     href: '#contact-us'
   },
   {
-    title: 'Offers',
+    title: 'Interest Rate',
     href: '#offers'
   }
 ]

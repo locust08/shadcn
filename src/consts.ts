@@ -1,40 +1,34 @@
 // Site Configuration
 // Centralized configuration for site metadata, SEO, and branding
 
-export const SITE_TITLE = 'Demo: Bistro - Restaurant Landing Page | Shadcn Studio'
+export const SITE_TITLE = 'SME Business Financing Malaysia | Ruang Bestari'
 export const SITE_DESCRIPTION =
-  'Enjoy fresh ingredients, thoughtfully prepared meals, and a welcoming space designed for memorable moments. Experience bistro dining made simple and delicious.'
+  'Working capital and business funding for registered Malaysian businesses, with repayment from 6 to 60 months and APR up to 12%.'
 
-export const GITHUB_URL = 'https://github.com/yourusername/shadcn-astro-bistro-landing-page'
-export const SITE_URL = 'https://shadcnstudio.com/'
+export const GITHUB_URL = 'https://github.com/locust08/shadcn'
+export const SITE_URL = 'https://business.ruangbestari.com.my/'
 
 export const SITE_METADATA = {
   title: {
-    default: 'Demo: Bistro - Restaurant Landing Page | Shadcn Studio'
+    default: 'SME Business Financing Malaysia | Ruang Bestari'
   },
   description:
-    'Enjoy fresh ingredients, thoughtfully prepared meals, and a welcoming space designed for memorable moments. Experience bistro dining made simple and delicious.',
+    'Working capital and business funding for registered Malaysian businesses, with repayment from 6 to 60 months and APR up to 12%.',
   keywords: [
-    'Astro',
-    'astro template',
-    'astro theme',
-    'astro starter',
-    'shadcn template',
-    'shadcn ui',
-    'shadcn/ui components',
-    'tailwind template',
-    'tailwind css',
-    'react components',
-    'SEO optimized',
-    'web development',
-    'static site generator',
-    'modern web apps',
-    'performance',
-    'typescript'
+    'SME business financing',
+    'business loan Malaysia',
+    'company loan',
+    'working capital',
+    'Ruang Bestari',
+    'KPKT licensed loan',
+    'business funding',
+    'cash flow financing',
+    'SME loan',
+    'Malaysia financing'
   ],
-  authors: [{ name: 'shadcn Studio', url: SITE_URL }],
-  creator: 'shadcn Studio',
-  publisher: 'shadcn Studio',
+  authors: [{ name: 'Ruang Bestari', url: SITE_URL }],
+  creator: 'Ruang Bestari',
+  publisher: 'Ruang Bestari',
   robots: {
     index: true,
     follow: true
@@ -55,27 +49,27 @@ export const SITE_METADATA = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    siteName: 'Bistro',
-    title: 'Demo: Bistro - Restaurant Landing Page | Shadcn Studio',
+    siteName: 'Ruang Bestari',
+    title: 'SME Business Financing Malaysia | Ruang Bestari',
     description:
-      'Enjoy fresh ingredients, thoughtfully prepared meals, and a welcoming space designed for memorable moments. Experience bistro dining made simple and delicious.',
+      'Working capital and business funding for registered Malaysian businesses, with repayment from 6 to 60 months and APR up to 12%.',
     images: [
       {
         url: '/images/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Demo: Bistro - Restaurant Landing Page | Shadcn Studio',
+        alt: 'SME Business Financing Malaysia | Ruang Bestari',
         type: 'image/png'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@shadcnstudio',
-    creator: '@shadcnstudio',
-    title: 'Demo: Bistro - Restaurant Landing Page | Shadcn Studio',
+    site: '@ruangbestari',
+    creator: '@ruangbestari',
+    title: 'SME Business Financing Malaysia | Ruang Bestari',
     description:
-      'Enjoy fresh ingredients, thoughtfully prepared meals, and a welcoming space designed for memorable moments. Experience bistro dining made simple and delicious.',
+      'Working capital and business funding for registered Malaysian businesses, with repayment from 6 to 60 months and APR up to 12%.',
     images: ['/images/og-image.png']
   },
   verification: {
@@ -88,29 +82,29 @@ export const SITE_METADATA = {
 // Social media links
 export const SOCIAL_LINKS = {
   github: GITHUB_URL,
-  twitter: 'https://twitter.com/shadcnstudio',
-  linkedin: 'https://linkedin.com/company/shadcnstudio',
-  discord: 'https://discord.gg/shadcnstudio'
+  twitter: '#',
+  linkedin: '#',
+  discord: '#'
 }
 
 // Company information for structured data
 export const COMPANY_INFO = {
-  name: 'shadcn Studio',
-  legalName: 'shadcn Studio Inc.',
+  name: 'Ruang Bestari',
+  legalName: 'Ruang Bestari',
   url: SITE_URL,
   logo: `/images/site-logo.png`,
   foundingDate: '2024',
   address: {
-    streetAddress: '123 Web Dev Street',
-    addressLocality: 'San Francisco',
-    addressRegion: 'CA',
-    postalCode: '94102',
-    addressCountry: 'US'
+    streetAddress: 'No.19-1, Jalan KS10/KU5, Taman Klang Sentral',
+    addressLocality: 'Klang',
+    addressRegion: 'Selangor',
+    postalCode: '41050',
+    addressCountry: 'MY'
   },
   contactPoint: {
-    telephone: '+1-555-123-4567',
+    telephone: '017-8228430',
     contactType: 'customer support',
-    email: 'support@shadcnstudio.com'
+    email: 'gigigoh6767@gmail.com'
   },
   sameAs: Object.values(SOCIAL_LINKS)
 }

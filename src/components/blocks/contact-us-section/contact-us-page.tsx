@@ -22,10 +22,10 @@ const ContactUs = ({ contactInfo }: { contactInfo: ContactInfo }) => {
           <Badge variant='outline' className='text-sm font-normal'>
             Contact Us
           </Badge>
-          <h2 className='text-2xl font-semibold md:text-3xl lg:text-4xl'>Get in touch with us </h2>
+          <h2 className='text-2xl font-semibold md:text-3xl lg:text-4xl'>Have questions? We are here to help</h2>
           <p className='text-muted-foreground text-xl'>
-            We eagerly look forward to warmly welcoming you very soon to our event. It promises to be a memorable
-            experience filled with exciting activities.
+            Contact our team for guidance on SME business financing, required documents, repayment options, or your
+            current loan application.
           </p>
         </div>
 
@@ -38,10 +38,10 @@ const ContactUs = ({ contactInfo }: { contactInfo: ContactInfo }) => {
           />
 
           <div>
-            <h3 className='mb-2 text-2xl'>We&apos;re here to serve you</h3>
+            <h3 className='mb-2 text-2xl'>Speak with our financing team</h3>
             <p className='text-muted-foreground mb-10 text-lg'>
-              We would love to hear from you, Whether you have a question, need a reservation, or want to learn more
-              about our offerings, we&apos;re here to assist.
+              Whether you need working capital, help preparing documents, or a clearer repayment plan, we are ready to
+              assist.
             </p>
 
             {/* Contact Info Grid */}

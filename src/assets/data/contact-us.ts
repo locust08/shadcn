@@ -1,24 +1,24 @@
-import { Clock8Icon, MapPinIcon, Mail, PhoneIcon } from 'lucide-react'
+import { Mail, MapPinIcon, MessageCircleIcon } from 'lucide-react'
 
 export const contactInfo = [
   {
-    title: 'Open Hours',
-    icon: Clock8Icon,
-    description: 'Monday-Friday\n8:00 am to 5:00 pm'
+    title: 'Address',
+    icon: MapPinIcon,
+    description: 'No.19-1, Jalan KS10/KU5\nTaman Klang Sentral, Klang'
   },
   {
-    title: 'Our Address',
+    title: 'Location',
     icon: MapPinIcon,
-    description: '802 Perston Rd,Maine\n96812, USA'
+    description: 'Bukit Raja Meru\n41050 Klang, Selangor'
   },
   {
     title: 'Email',
     icon: Mail,
-    description: 'info@seliziakitchen.com'
+    description: 'gigigoh6767@gmail.com'
   },
   {
-    title: 'Phone',
-    icon: PhoneIcon,
-    description: '+1 (123) 456-7890'
+    title: 'Phone / WhatsApp',
+    icon: MessageCircleIcon,
+    description: '017-8228430'
   }
 ]
