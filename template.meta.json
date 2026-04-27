@@ -1,0 +1,10 @@
+{
+  "name": "Bistro Landing Page",
+  "folder": "apps/template-01-bistro",
+  "framework": "Astro",
+  "ui": ["React", "Tailwind CSS", "shadcn/ui-style components"],
+  "pageType": "Restaurant / Bistro landing page",
+  "bestFor": ["restaurant", "cafe", "bistro", "food business", "hospitality landing page"],
+  "buildCommand": "pnpm run build",
+  "lintCommand": "pnpm run lint"
+}
