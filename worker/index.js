@@ -1,7 +1,7 @@
 const SHEET_RANGE = 'Ruang Bestari Website Applications!A:M'
 const TOKEN_URL = 'https://oauth2.googleapis.com/token'
 const SHEETS_SCOPE = 'https://www.googleapis.com/auth/spreadsheets'
-const DRIVE_SCOPE = 'https://www.googleapis.com/auth/drive.file'
+const DRIVE_SCOPE = 'https://www.googleapis.com/auth/drive'
 
 const requiredFields = ['fullName', 'phone', 'email']
 
@@ -105,6 +105,10 @@ const getFormValue = (formData, field) => {
 }
 
 const uploadDocument = async (file, accessToken, env) => {
+  if (!env.GOOGLE_DRIVE_FOLDER_ID) {
+    throw new Error('Missing Google Drive folder configuration.')
+  }
+
   const metadata = {
     name: `${Date.now()}-${file.name}`,
     parents: [env.GOOGLE_DRIVE_FOLDER_ID]
@@ -131,7 +135,9 @@ const uploadDocument = async (file, accessToken, env) => {
   })
 
   if (!uploadResponse.ok) {
-    throw new Error(`Unable to upload ${file.name}.`)
+    const errorText = await uploadResponse.text()
+
+    throw new Error(`Unable to upload ${file.name}: ${errorText}`)
   }
 
   return uploadResponse.json()
