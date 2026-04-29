@@ -125,14 +125,17 @@ const uploadDocument = async (file, accessToken, env) => {
     new TextEncoder().encode(`\r\n--${delimiter}--`)
   ]
 
-  const uploadResponse = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name,webViewLink', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-      'Content-Type': `multipart/related; boundary=${delimiter}`
-    },
-    body: new Blob(bodyParts)
-  })
+  const uploadResponse = await fetch(
+    'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&supportsAllDrives=true&fields=id,name,webViewLink',
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': `multipart/related; boundary=${delimiter}`
+      },
+      body: new Blob(bodyParts)
+    }
+  )
 
   if (!uploadResponse.ok) {
     const errorText = await uploadResponse.text()
