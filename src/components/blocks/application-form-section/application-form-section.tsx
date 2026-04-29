@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState, type ChangeEvent } from 'react'
+import { useRef, useState, type ChangeEvent, type FormEvent } from 'react'
 
 import { ArrowRightIcon, BadgeCheckIcon, ClockIcon, FileTextIcon, ShieldCheckIcon, UploadIcon, XIcon } from 'lucide-react'
 
@@ -37,6 +37,8 @@ const formatFileSize = (bytes: number) => {
 
 const ApplicationFormSection = () => {
   const [documents, setDocuments] = useState<File[]>([])
+  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const [submissionMessage, setSubmissionMessage] = useState('')
   const documentsInputRef = useRef<HTMLInputElement>(null)
 
   const handleDocumentsChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -52,6 +54,45 @@ const ApplicationFormSection = () => {
 
   const handleRemoveDocument = (indexToRemove: number) => {
     setDocuments(currentDocuments => currentDocuments.filter((_, index) => index !== indexToRemove))
+  }
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    const form = event.currentTarget
+    const formData = new FormData(form)
+
+    setSubmissionStatus('submitting')
+    setSubmissionMessage('')
+
+    const response = await fetch('/api/apply', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        fullName: formData.get('fullName'),
+        phone: formData.get('phone'),
+        email: formData.get('email'),
+        company: formData.get('company'),
+        loanAmount: formData.get('loanAmount'),
+        businessType: formData.get('businessType'),
+        message: formData.get('message'),
+        sourceUrl: window.location.href
+      })
+    })
+
+    if (!response.ok) {
+      setSubmissionStatus('error')
+      setSubmissionMessage('Submission failed. Please try again or contact our team directly.')
+
+      return
+    }
+
+    setSubmissionStatus('success')
+    setSubmissionMessage('Application submitted. Our team will review your details and contact you soon.')
+    form.reset()
+    setDocuments([])
   }
 
   return (
@@ -96,19 +137,19 @@ const ApplicationFormSection = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form className='grid gap-5'>
+            <form className='grid gap-5' onSubmit={handleSubmit}>
               <div className='grid gap-4 sm:grid-cols-2'>
                 <div className='space-y-2'>
                   <label htmlFor='full-name' className='text-sm font-medium'>
                     Full name
                   </label>
-                  <Input id='full-name' name='fullName' placeholder='Your full name' autoComplete='name' />
+                  <Input id='full-name' name='fullName' placeholder='Your full name' autoComplete='name' required />
                 </div>
                 <div className='space-y-2'>
                   <label htmlFor='phone' className='text-sm font-medium'>
                     Phone number
                   </label>
-                  <Input id='phone' name='phone' placeholder='017-1234567' autoComplete='tel' />
+                  <Input id='phone' name='phone' placeholder='017-1234567' autoComplete='tel' required />
                 </div>
               </div>
 
@@ -117,7 +158,7 @@ const ApplicationFormSection = () => {
                   <label htmlFor='email' className='text-sm font-medium'>
                     Email address
                   </label>
-                  <Input id='email' name='email' type='email' placeholder='you@example.com' autoComplete='email' />
+                  <Input id='email' name='email' type='email' placeholder='you@example.com' autoComplete='email' required />
                 </div>
                 <div className='space-y-2'>
                   <label htmlFor='company' className='text-sm font-medium'>
@@ -217,13 +258,23 @@ const ApplicationFormSection = () => {
               </div>
 
               <Button
-                type='button'
+                type='submit'
                 size='lg'
                 className='group relative w-fit overflow-hidden rounded-full text-base before:absolute before:inset-0 before:rounded-[inherit] before:bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.5)_50%,transparent_75%,transparent_100%)] before:bg-[length:250%_250%,100%_100%] before:bg-[position:200%_0,0_0] before:bg-no-repeat before:transition-[background-position_0s_ease] before:duration-1000 hover:before:bg-[position:-100%_0,0_0] has-[>svg]:px-6 dark:before:bg-[linear-gradient(45deg,transparent_25%,rgba(0,0,0,0.2)_50%,transparent_75%,transparent_100%)]'
+                disabled={submissionStatus === 'submitting'}
               >
-                Submit application
+                {submissionStatus === 'submitting' ? 'Submitting...' : 'Submit application'}
                 <ArrowRightIcon className='transition-transform duration-200 group-hover:translate-x-0.5' />
               </Button>
+
+              {submissionMessage && (
+                <p
+                  className={`text-sm ${submissionStatus === 'success' ? 'text-primary' : 'text-destructive'}`}
+                  role='status'
+                >
+                  {submissionMessage}
+                </p>
+              )}
             </form>
           </CardContent>
         </Card>
