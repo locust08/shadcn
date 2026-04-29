@@ -65,6 +65,12 @@ const ApplicationFormSection = () => {
     setSubmissionStatus('submitting')
     setSubmissionMessage('')
 
+    formData.delete('documents')
+
+    documents.forEach(document => {
+      formData.append('documents', document)
+    })
+
     formData.set('sourceUrl', window.location.href)
 
     const response = await fetch('/api/apply', {
