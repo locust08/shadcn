@@ -65,21 +65,11 @@ const ApplicationFormSection = () => {
     setSubmissionStatus('submitting')
     setSubmissionMessage('')
 
+    formData.set('sourceUrl', window.location.href)
+
     const response = await fetch('/api/apply', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        fullName: formData.get('fullName'),
-        phone: formData.get('phone'),
-        email: formData.get('email'),
-        company: formData.get('company'),
-        loanAmount: formData.get('loanAmount'),
-        businessType: formData.get('businessType'),
-        message: formData.get('message'),
-        sourceUrl: window.location.href
-      })
+      body: formData
     })
 
     if (!response.ok) {

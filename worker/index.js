@@ -1,6 +1,7 @@
-const SHEET_RANGE = 'Ruang Bestari Website Applications!A:K'
+const SHEET_RANGE = 'Ruang Bestari Website Applications!A:M'
 const TOKEN_URL = 'https://oauth2.googleapis.com/token'
 const SHEETS_SCOPE = 'https://www.googleapis.com/auth/spreadsheets'
+const DRIVE_SCOPE = 'https://www.googleapis.com/auth/drive.file'
 
 const requiredFields = ['fullName', 'phone', 'email']
 
@@ -56,7 +57,7 @@ const createJwt = async env => {
   const payload = base64UrlEncode(
     JSON.stringify({
       iss: env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-      scope: SHEETS_SCOPE,
+      scope: `${SHEETS_SCOPE} ${DRIVE_SCOPE}`,
       aud: TOKEN_URL,
       exp: now + 3600,
       iat: now
@@ -97,13 +98,67 @@ const getAccessToken = async env => {
   return tokenData.access_token
 }
 
+const getFormValue = (formData, field) => {
+  const value = formData.get(field)
+
+  return typeof value === 'string' ? value : ''
+}
+
+const uploadDocument = async (file, accessToken, env) => {
+  const metadata = {
+    name: `${Date.now()}-${file.name}`,
+    parents: [env.GOOGLE_DRIVE_FOLDER_ID]
+  }
+
+  const delimiter = 'ruang-bestari-upload-boundary'
+  const metadataPart = JSON.stringify(metadata)
+  const fileBuffer = await file.arrayBuffer()
+
+  const bodyParts = [
+    new TextEncoder().encode(`--${delimiter}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n${metadataPart}\r\n`),
+    new TextEncoder().encode(`--${delimiter}\r\nContent-Type: ${file.type || 'application/octet-stream'}\r\n\r\n`),
+    fileBuffer,
+    new TextEncoder().encode(`\r\n--${delimiter}--`)
+  ]
+
+  const uploadResponse = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name,webViewLink', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': `multipart/related; boundary=${delimiter}`
+    },
+    body: new Blob(bodyParts)
+  })
+
+  if (!uploadResponse.ok) {
+    throw new Error(`Unable to upload ${file.name}.`)
+  }
+
+  return uploadResponse.json()
+}
+
 const handleApply = async (request, env) => {
   if (request.method !== 'POST') {
     return jsonResponse({ ok: false, error: 'Method not allowed.' }, 405)
   }
 
   try {
-    const payload = await request.json()
+    const contentType = request.headers.get('Content-Type') ?? ''
+    const formData = contentType.includes('multipart/form-data') ? await request.formData() : null
+
+    const payload = formData
+      ? {
+          fullName: getFormValue(formData, 'fullName'),
+          phone: getFormValue(formData, 'phone'),
+          email: getFormValue(formData, 'email'),
+          company: getFormValue(formData, 'company'),
+          loanAmount: getFormValue(formData, 'loanAmount'),
+          businessType: getFormValue(formData, 'businessType'),
+          message: getFormValue(formData, 'message'),
+          sourceUrl: getFormValue(formData, 'sourceUrl')
+        }
+      : await request.json()
+
     const missingField = requiredFields.find(field => !payload[field])
 
     if (missingField) {
@@ -111,6 +166,24 @@ const handleApply = async (request, env) => {
     }
 
     const accessToken = await getAccessToken(env)
+
+    const documents = formData
+      ? formData.getAll('documents').filter(document => document instanceof File && document.size > 0)
+      : []
+
+    const uploadedDocuments = []
+
+    for (const document of documents) {
+      uploadedDocuments.push(await uploadDocument(document, accessToken, env))
+    }
+
+    const documentLinks = uploadedDocuments.map(document => document.webViewLink).join('\n')
+
+    const uploadStatus =
+      documents.length > 0
+        ? `Uploaded ${uploadedDocuments.length} document${uploadedDocuments.length === 1 ? '' : 's'}`
+        : 'No documents'
+
     const appendUrl = `https://sheets.googleapis.com/v4/spreadsheets/${env.GOOGLE_SHEET_ID}/values/${encodeURIComponent(SHEET_RANGE)}:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`
 
     const sheetResponse = await fetch(appendUrl, {
@@ -132,6 +205,8 @@ const handleApply = async (request, env) => {
             payload.message ?? '',
             payload.sourceUrl ?? '',
             'New',
+            documentLinks,
+            uploadStatus,
             ''
           ]
         ]
