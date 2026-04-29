@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import HeroSectionPage from '@/components/blocks/hero-section/hero-section'
+import ApplicationFormSection from '@/components/blocks/application-form-section/application-form-section'
 import PopularDishes from '@/components/blocks/popular-dishes/popular-dishes'
 import AboutUs from '@/components/blocks/about-us-section/about-us-page'
 import Testimonials from '@/components/blocks/testimonials-section/testimonials-section'
@@ -44,6 +45,7 @@ const schema = {
 
 <Layout title={pageTitle} description={pageDescription} keywords={pageKeywords} schema={schema}>
   <HeroSectionPage menudata={menudata} client:load />
+  <ApplicationFormSection client:load />
   <PopularDishes popularDishes={popularDishes} client:load />
   <AboutUs stats={stats} />
   <Testimonials testimonials={testimonials} client:load />

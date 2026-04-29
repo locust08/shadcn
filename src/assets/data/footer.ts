@@ -1,26 +1,30 @@
 export const footerData = [
   {
-    title: 'Business Loan',
+    title: 'Loan',
     href: '#popular-dishes'
+  },
+  {
+    title: 'Apply',
+    href: '#application-form'
   },
   {
     title: 'Process',
     href: '#new-items'
   },
   {
-    title: 'About Us',
+    title: 'About',
     href: '#about-us'
   },
   {
-    title: 'Testimonials',
+    title: 'Reviews',
     href: '#testimonials'
   },
   {
-    title: 'Contact Us',
+    title: 'Contact',
     href: '#contact-us'
   },
   {
-    title: 'Interest Rate',
+    title: 'Rates',
     href: '#offers'
   }
 ]

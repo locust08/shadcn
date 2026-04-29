@@ -53,7 +53,7 @@ type MenuNavigationProps = {
 const MenuNavigation = ({ navigationData, activeSection, className }: MenuNavigationProps) => {
   return (
     <NavigationMenu viewport={false} className={className}>
-      <NavigationMenuList className='flex-wrap justify-start gap-0'>
+      <NavigationMenuList className='flex-nowrap justify-start gap-0'>
         {navigationData.map(navItem => {
           if (navItem.href) {
             // Extract section ID from href
@@ -71,7 +71,7 @@ const MenuNavigation = ({ navigationData, activeSection, className }: MenuNaviga
                   }}
                   className={cn(
                     navigationMenuTriggerStyle(),
-                    'rounded-full bg-transparent px-3 py-1.5 text-base! font-normal transition-colors duration-200',
+                    'rounded-full bg-transparent px-2.5 py-1.5 text-sm! font-normal transition-colors duration-200 xl:px-3 xl:text-base!',
                     'hover:text-primary hover:bg-primary/5 dark:hover:bg-primary/10',
                     'focus:text-primary focus:bg-primary/5 dark:focus:bg-primary/10',
                     isActive ? 'text-primary bg-primary/5 dark:bg-primary/10' : 'text-muted-foreground'
